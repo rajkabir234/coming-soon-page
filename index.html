@@ -1,40 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kabir Rajbanshi | Website</title>
-<style>
-:root{--bg:#f4f1ff;--text:#14122b;--g1:#6a5cff;--g2:#ff5fa2;--g3:#ffb347;--pill:rgba(255,255,255,.7);--line:rgba(20,18,43,.12);
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0b1e;--text:#f4f2ff;--pill:rgba(255,255,255,.06);--line:rgba(255,255,255,.14)}}
-:root[data-theme="dark"]{--bg:#0d0b1e;--text:#f4f2ff;--pill:rgba(255,255,255,.06);--line:rgba(255,255,255,.14)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:var(--text);
-font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-background:radial-gradient(60% 50% at 15% 10%,color-mix(in srgb,var(--g1) 35%,transparent),transparent),
-radial-gradient(55% 50% at 90% 20%,color-mix(in srgb,var(--g2) 30%,transparent),transparent),
-radial-gradient(60% 50% at 50% 100%,color-mix(in srgb,var(--g3) 30%,transparent),transparent),var(--bg)}
-main{width:100%;max-width:760px}
-h1{margin:0 0 40px;font-size:clamp(44px,12vw,104px);line-height:1;letter-spacing:-.04em;font-weight:800;
-background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-nav a{width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line);background:var(--pill);color:var(--text);backdrop-filter:blur(6px);transition:border-color .15s,color .15s}
-nav a:hover,nav a:focus-visible{border-color:var(--g2);color:var(--g2);outline:none}
-svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-</style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kabir Rajbanshi | Portfolio Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="site.css?v=work-history-1">
+<meta name="description" content="Kabir Rajbanshi — motion designer and communication engineer in Nepal. Explore broadcast production, live events, and engineering research."><link rel="icon" type="image/png" href="assets/kabir-logo.png"><link rel="apple-touch-icon" href="assets/kabir-logo.png"><meta name="theme-color" content="#9929fb"></head>
 <body>
-<main>
-  <h1>Will be back ...</h1>
-  <nav aria-label="Social links">
-    <a href="https://instagram.com/rkbr234" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
-    <a href="https://x.com/kabirrajbanshi" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
-    <a href="https://github.com/rajkabir234" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-    <a href="https://linkedin.com/in/kabir-rajbanshi" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-    <a href="mailto:rajkabir234@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
-  </nav>
-</main>
-</body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- ── NAV ── -->
+<nav aria-label="Main navigation"><a href="#home" class="nav-logo"><img class="brand-logo" src="assets/kabir-logo.png" alt="" width="52" height="52"><strong>Kabir.</strong></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-links">Menu ☰</button><ul class="nav-links" id="main-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#experience">Experience</a></li><li><a href="#education">Education</a></li></ul><a href="#contact" class="nav-cta">Contact</a></nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Available for Projects
+      </div>
+      <h1 class="hero-hd">Hello, I’m<br>Kabir Rajbanshi</h1>
+      <div class="hero-role">Motion Designer &amp; Communication Engineer</div>
+      <p class="hero-desc">I’m a freelance <strong>Motion Designer</strong> and <strong>Communication Engineer</strong> based in Lalitpur, Nepal. I bring stories to life through motion graphics, broadcast production, and live event experiences.</p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-solid">View My Work</a>
+        <a href="#contact" class="btn-outline">Let's Connect</a>
+      </div>
+      <div class="hero-summary"><div><strong>Motion</strong><span>Design &amp; storytelling</span></div><div><strong>Broadcast</strong><span>Production &amp; live events</span></div><div><strong>Engineering</strong><span>Communication &amp; research</span></div></div>
+    </div>
+
+    <div class="hero-card"><img class="hero-img" src="assets/kabir-portrait.jpg" alt="Kabir Rajbanshi" fetchpriority="high" decoding="async"><span class="portrait-caption"><span></span> Creative thinking. Technical precision.</span></div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio" class="sec" >
+  <div class="sec-inner">
+    <div class="reveal">
+      <div class="sec-label">Selected Works</div>
+      <h2 class="sec-title">My <span class="acc ital">Portfolio</span></h2>
+    </div>
+    <div class="port-grid reveal">
+      <a class="port-card" href="event-showreel.html" aria-label="Open event showreel">
+        <div class="port-img-wrap">
+          <div class="category-art category-1" aria-hidden="true"><span>BROADCAST & LIVE PRODUCTION</span><strong>▶</strong><b>Event Showreel</b></div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Production · Motion Graphics</div>
+          <div class="port-title">Event Showreel</div>
+          <div class="port-desc">Full-scale event production and motion graphics, capturing live moments with cinematic quality.</div>
+        </div>
+        <div class="port-hover"><div class="port-hover-btn">Explore collection →</div></div>
+      </a>
+      <a class="port-card" href="client-works.html" aria-label="Open client works">
+        <div class="port-img-wrap">
+          <div class="category-art category-2" aria-hidden="true"><span>WEBSITES · IMAGES · DESIGN</span><strong>↗</strong><b>Client Works</b></div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Web · Images · Visual Design</div>
+          <div class="port-title">Client Works</div>
+          <div class="port-desc">Websites, images, and brand visuals created for clients.</div>
+        </div>
+        <div class="port-hover"><div class="port-hover-btn">Explore collection →</div></div>
+      </a>
+      <a class="port-card" href="engineering-projects.html" aria-label="Open engineering projects">
+        <div class="port-img-wrap">
+          <div class="category-art category-3" aria-hidden="true"><span>COMMUNICATION & RESEARCH</span><strong>∿</strong><b>Engineering</b></div>
+        </div>
+        <div class="port-info">
+          <div class="port-cat">Engineering · Research</div>
+          <div class="port-title">Engineering Projects</div>
+          <div class="port-desc">Research spanning communication systems, neural networks, and signal processing.</div>
+        </div>
+        <div class="port-hover"><div class="port-hover-btn">Explore collection →</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ── ABOUT ── -->
+<section id="about" class="sec">
+  <div class="sec-inner about-grid reveal">
+    <div>
+      <div class="sec-label">About Me</div>
+      <h2 class="sec-title">Engineer <span class="ital acc">who</span><br>Creates</h2>
+      <p class="about-text">
+        An <strong>Electrical & Electronics (Communication) Engineering</strong> graduate of Kathmandu University, now pursuing a Master's — alongside a parallel career in motion design, television production, and broadcast engineering.
+      </p>
+      <p class="about-text">
+        Currently working as a <strong>Freelance Motion Graphic Artist</strong>, Program Producer, and Event AV Coordinator — bringing ideas to life through visually compelling narratives and seamless event execution.
+      </p>
+      <p class="about-text">
+        Keenly interested in <strong>Broadcast Engineering</strong>, Communication Systems, and Digital Media Strategies, with a long-term vision of integrating technical innovation with creative media production.
+      </p>
+      <div class="about-details">
+        <div class="detail-row"><span class="dk">From</span><span class="dv">Jhapa, Nepal</span></div>
+        <div class="detail-row"><span class="dk">Lives</span><span class="dv">Lalitpur, Nepal</span></div>
+        
+        <div class="detail-row"><span class="dk">Degree</span><span class="dv">BE EE (Communication) — Kathmandu University</span></div>
+      </div>
+      <a href="CV_Kabir%20Rajbanshi.pdf" class="btn-solid" target="_blank">↓ Download CV</a>
+    </div>
+    <div>
+      <div class="skills-label">Core Capabilities</div>
+      <div class="skill-block">
+        <div class="sk-top"><span class="sk-name">Motion Design</span></div>
+        <div class="sk-sub">Adobe After Effects & Premiere Pro</div>
+        
+      </div>
+      <div class="skill-block">
+        <div class="sk-top"><span class="sk-name">Video Production</span></div>
+        <div class="sk-sub">Filming, Editing & Post-Production</div>
+        
+      </div>
+      <div class="skill-block">
+        <div class="sk-top"><span class="sk-name">Broadcast & Live Production</span></div>
+        <div class="sk-sub">TV Production · Event AV Management</div>
+        
+      </div>
+      <div class="skill-block">
+        <div class="sk-top"><span class="sk-name">Communication Engineering</span></div>
+        <div class="sk-sub">Wireless · Optical Fiber · Satellite · Neural Networks</div>
+        
+      </div>
+      <div class="skill-block">
+        <div class="sk-top"><span class="sk-name">Programming</span></div>
+        <div class="sk-sub">MATLAB · Python · C++ · HTML</div>
+        
+      </div>
+      <div class="skill-block">
+        <div class="sk-top"><span class="sk-name">Project & Content Strategy</span></div>
+        <div class="sk-sub">Brand Engagement · Digital Media · PR</div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience" class="sec">
+  <div class="sec-inner">
+    <div class="reveal">
+      <div class="sec-label">Work History</div>
+      <h2 class="sec-title">Professional <span class="acc ital">Experience</span></h2>
+    </div>
+    <div class="exp-grid reveal">
+<article class="exp-card"><div class="exp-category">TA</div><div class="exp-period">September 2026 to Present</div><h3 class="exp-title">Teaching Assistant</h3><div class="exp-org">Kathmandu University (KU) | Dhulikhel</div><p class="exp-desc">Teaching and laboratory support for engineering students.</p></article>
+<article class="exp-card"><div class="exp-category">TA</div><div class="exp-period">May 2026 to Present</div><h3 class="exp-title">Teaching Assistant</h3><div class="exp-org">Kantipur Engineering College (TU) | Dhapakhel, Lalitpur</div><p class="exp-desc">Teaching and laboratory support for engineering students.</p></article>
+<article class="exp-card"><div class="exp-category">Tech</div><div class="exp-period">2022 to Present</div><h3 class="exp-title">Chief Technical Officer</h3><div class="exp-org">Technova Hardware and IT Solutions</div><p class="exp-desc">Overlooking every technical and creative aspect of the new startup, Training and Components Sale.</p></article>
+<article class="exp-card"><div class="exp-category">Tech</div><div class="exp-period">2022 to Present</div><h3 class="exp-title">Chief Technical &amp; Creative Officer</h3><div class="exp-org">ICT Foundation Nepal</div><p class="exp-desc">Coordinating every technical and creative aspect of the organization. Supporting Nepal&#x27;s largest digital conferences and events from planning through execution.</p></article>
+<article class="exp-card"><div class="exp-category">Creative</div><div class="exp-period">2021 to Present</div><h3 class="exp-title">Production Director</h3><div class="exp-org">ICT Award | Living with ICT</div><p class="exp-desc">Leading television shows, broadcast management, public relations, and event branding. Progressed as Motion Graphics Designer to Production Designer and to Production Director over four years.</p></article>
+<article class="exp-card"><div class="exp-category">Leadership</div><div class="exp-period">2022 to 2025</div><h3 class="exp-title">President — SEEE</h3><div class="exp-org">Kathmandu University</div><p class="exp-desc">Led the club for three years with different roles. Progressed from Chief Editor to Vice President and then President. Lead events, publications, and departmental initiatives.</p></article>
+<article class="exp-card"><div class="exp-category">Freelance</div><h3 class="exp-title">Motion Graphic Artist &amp; AV Coordinator</h3><div class="exp-org">Independent</div><p class="exp-desc">Freelance motion graphics, event audio-visual coordination, and creative direction for national and provincial events, television productions, and brand campaigns.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education" class="sec">
+  <div class="sec-inner">
+    <div class="reveal">
+      <div class="sec-label">Academic Background</div>
+      <h2 class="sec-title">Education <span class="out">&</span> <span class="acc ital">Training</span></h2>
+    </div>
+    <div class="edu-timeline reveal">
+      <div class="edu-item">
+        <div class="edu-year">2025 — Present</div>
+        <div>
+          <div class="edu-degree">Masters in Communication Engineering</div>
+          <div class="edu-inst">Kathmandu University, School of Engineering</div>
+          <div class="edu-tags">
+            <span class="edu-tag">Digital Communication Systems</span>
+            <span class="edu-tag">Wireless Communication</span>
+            <span class="edu-tag">Research & Project Mgmt</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2021 — 2025</div>
+        <div>
+          <div class="edu-degree">BE Electrical & Electronics (Communication)</div>
+          <div class="edu-inst">Kathmandu University, School of Engineering</div>
+          <div class="edu-tags">
+            <span class="edu-tag">Communication System Engineering</span>
+            <span class="edu-tag">Optical Fiber & Wireless</span>
+            <span class="edu-tag">Neural Network & Fuzzy Logic</span>
+            <span class="edu-tag">Satellite Communication</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2018 — 2020</div>
+        <div>
+          <div class="edu-degree">+2 Science (NEB)</div>
+          <div class="edu-inst">Moonlight Secondary School</div>
+          <div class="edu-tags">
+            <span class="edu-tag">Physics</span><span class="edu-tag">Chemistry</span>
+            <span class="edu-tag">Mathematics</span><span class="edu-tag">Computer Science</span>
+          </div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2014 — 2018</div>
+        <div>
+          <div class="edu-degree">SEE (NEB)</div>
+          <div class="edu-inst">Anant English School</div>
+          <div class="edu-tags">
+            <span class="edu-tag">House Captain</span>
+            <span class="edu-tag">Social Media Manager</span>
+            <span class="edu-tag">President, Volleyball Club</span>
+            <span class="edu-tag">Event Organizer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLIENTS ── -->
+<section id="clients" class="sec" style="padding-top:80px;padding-bottom:80px;">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:40px;">
+      <div class="sec-label" style="justify-content:center">Selected platforms & organizations</div>
+      <h2 class="sec-title" style="margin-bottom:0">My work <span class="acc ital">featured on</span></h2>
+    </div>
+    <div class="logo-marquee" id="featured-marquee"><div class="logo-track"><div class="featured-logos"><div class="featured-logo"><img src="Work%20Featured/dnc.png" alt="Digital Nepal Conclave" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/global-spark.png" alt="Global Spark" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/himalaya-tv.png" alt="Himalaya TV" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/ict-award.png" alt="ICT Award" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/ifn.png" alt="ICT Foundation Nepal" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/kantipur-tv.png" alt="Kantipur TV" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/KU.png" alt="Kathmandu University" loading="lazy" width="220" height="100"></div></div><div class="featured-logos logo-copy" aria-hidden="true"><div class="featured-logo"><img src="Work%20Featured/dnc.png" alt="" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/global-spark.png" alt="" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/himalaya-tv.png" alt="" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/ict-award.png" alt="" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/ifn.png" alt="" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/kantipur-tv.png" alt="" loading="lazy" width="220" height="100"></div><div class="featured-logo"><img src="Work%20Featured/KU.png" alt="" loading="lazy" width="220" height="100"></div></div></div></div>
+  </div>
+</section>
+
+
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="sec">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:0">
+      <div class="sec-label" style="justify-content:center">// Let's Talk</div>
+      <h2 class="sec-title" style="margin-bottom:56px">Get in <span class="acc ital">Touch</span></h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <h3 class="contact-heading">Let's build something <span class="acc">remarkable</span> together.</h3>
+        <p class="contact-desc">Feel free to reach out to discuss your project, a collaboration, or just to say hi. Always open to interesting conversations and new opportunities.</p>
+        <div class="c-links">
+          <a href="mailto:rajkabir234@gmail.com" class="c-link">
+            <div class="c-link-icon">📧</div>
+            <div><span class="c-lbl">Email</span><span class="c-val">rajkabir234@gmail.com</span></div>
+          </a>
+          <a href="https://rajkabir.com.np" class="c-link" target="_blank">
+            <div class="c-link-icon">🌐</div>
+            <div><span class="c-lbl">Website</span><span class="c-val">rajkabir.com.np</span></div>
+          </a>
+          <a href="CV_Kabir%20Rajbanshi.pdf" class="c-link" target="_blank">
+            <div class="c-link-icon">📄</div>
+            <div><span class="c-lbl">Resume / CV</span><span class="c-val">Download latest CV</span></div>
+          </a>
+          <div class="c-link">
+            <div class="c-link-icon">📍</div>
+            <div><span class="c-lbl">Location</span><span class="c-val">Lalitpur, Nepal</span></div>
+          </div>
+        </div>
+      </div>
+      <form id="contact-form" action="https://formsubmit.co/rajkabir234@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New portfolio inquiry — rajkabir.com.np">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="form-row"><div class="form-group"><label class="form-label" for="contact-name">Your Name</label><input id="contact-name" autocomplete="name" name="name" type="text" class="form-input" placeholder="Full name" required></div>
+        <div class="form-group"><label class="form-label" for="contact-email">Email</label><input id="contact-email" autocomplete="email" name="email" type="email" class="form-input" placeholder="your@email.com" required></div></div>
+        <div class="form-group"><label class="form-label" for="contact-subject">Subject</label><input id="contact-subject" name="subject" type="text" class="form-input" placeholder="Project / Collaboration" required></div>
+        <div class="form-group"><label class="form-label" for="contact-message">Message</label><textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell me about your project..." required></textarea></div>
+        <button class="btn-solid" type="submit">Send Message →</button>
+        <p class="form-note">Messages are sent through FormSubmit. You can also email me directly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<section class="project-cta"><h2>Have a project in mind?<br>Let’s make it happen.</h2><p>Motion design, live production, or an idea at the intersection of creativity and engineering.</p><a class="btn-solid" href="#contact">Let’s work together →</a></section><footer>
+  <div class="foot-inner">
+    <div class="foot-brand"><img class="brand-logo" src="assets/kabir-logo.png" alt="" width="44" height="44">Kabir <em>Rajbanshi</em></div>
+    <div class="foot-meta">© 2026 · Motion Designer & Engineer · Lalitpur, Nepal</div>
+    <div class="foot-links">
+      <a href="#about">About</a>
+      <a href="#portfolio">Work</a>
+      <a href="CV_Kabir%20Rajbanshi.pdf" target="_blank">CV</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+const toggle=document.querySelector('.menu-toggle');
+const links=document.querySelector('.nav-links');
+toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));links.classList.toggle('is-open',open);});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{toggle.setAttribute('aria-expanded','false');links.classList.remove('is-open');}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){toggle.setAttribute('aria-expanded','false');links.classList.remove('is-open');}});
+</script></body>
 </html>
