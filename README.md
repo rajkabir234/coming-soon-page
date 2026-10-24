@@ -26,9 +26,6 @@ The homepage uses all seven supplied PNG logos from `Work Featured/`, labeled "M
 ## Check details
 Confirm the exact institution name for the Dhapakhel teaching-assistant position (the request mentioned both Kantipur Engineering College and Kathmandu Engineering College), and add its start date. Replace the short generic role descriptions with accurate responsibilities. Existing profile image, CV, and portfolio thumbnails are referenced from rajkabir.com.np and need to remain accessible. Existing counts are inherited from the original and should be verified.
 
-## Picto-inspired redesign
-All four pages share `site.css` and use Work Sans, purple (#9929FB), white, charcoal, and soft lilac gradients. This is a custom implementation inspired by Picto, not a copy of its template source. Original HTML is saved in `backups/before-picto/`. Upload `site.css` alongside the HTML files. The previous remote portrait and thumbnail URLs return 404; the homepage now uses an intentional KR monogram and category artwork until real replacement images are supplied.
-
 ## Client Works
 `client-works.html` replaces the Graphics Design collection. The old `graphics-design.html` redirects to it for existing links. Its responsive bento grid reserves larger panels for websites and systems and smaller panels for visual work. The illustrations are abstract placeholders, not real client projects; entries are marked Coming soon. Replace them with actual screenshots/images, project titles, your role, and optional website or case-study links when supplied. Upload the new HTML file and updated stylesheet.
 
