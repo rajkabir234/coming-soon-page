@@ -1,0 +1,11 @@
+dist/
+backups/
+*-preview.png
+*-review.jpg
+preview-server*.log
+Kabir Rajbanshi.JPG
+assets/instagram-source.json
+assets/client-works/posts.json
+node_modules/
+.env
+.env.*
