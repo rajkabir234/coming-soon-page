@@ -36,3 +36,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);display:f
 .brand-logo{display:block;width:52px;height:52px;object-fit:contain;flex-shrink:0}.collection-brand,.foot-brand{display:flex;align-items:center;gap:12px}.collection-brand .brand-logo,.foot-brand .brand-logo{width:44px;height:44px}.foot-brand{gap:9px}.foot-brand em{margin-left:-3px}@media(max-width:800px){.nav-logo .brand-logo{width:42px;height:42px}.collection-brand .brand-logo{width:38px;height:38px}}
 
 .exp-category{display:inline-block;color:var(--purple-dark);background:var(--pale);font-size:11px;font-weight:600;letter-spacing:.06em;padding:4px 9px;border-radius:4px;margin-bottom:16px}.exp-card .exp-desc{margin-bottom:0}.exp-card .exp-title{margin-top:0}
+
+/* Consistent vector icons inherit surrounding text color. */
+.icon{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.18em;flex-shrink:0}.btn-solid,.btn-outline,.nav-cta{gap:9px}.c-link-icon .icon{width:22px;height:22px}.category-art>strong .icon{width:78px;height:78px;vertical-align:middle}.menu-toggle .icon{width:16px;height:16px;margin-left:4px}.port-hover-btn .icon,.item-body>a .icon,.visual-caption .icon{margin-left:5px}.startup-wordmark .icon{width:.75em;height:.75em}.collection nav>a .icon{margin-right:5px}
